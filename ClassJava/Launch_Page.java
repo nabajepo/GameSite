@@ -15,7 +15,7 @@ import javax.swing.JFileChooser;
 public class Launch_Page {
     public static void main(String[] args){
        Identification_Page identification=new Identification_Page();
-       PlayMusic e=new PlayMusic(null, null, 0);
+       
     }
     
 }
