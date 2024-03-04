@@ -1,3 +1,2 @@
 #This project is not done yet 
-#This is my first push but it will be more
-#The next project is Tic_Tac_Toe maybe available next week
+#The next project is Tic_Tac_Toe maybe available in two weeks i got a original IDEA for it
