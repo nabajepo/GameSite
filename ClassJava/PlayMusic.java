@@ -24,9 +24,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 import java.util.Timer;
-
-
-public class PlayMusic implements MouseListener,Serializable {
+public class PlayMusic implements MouseListener {
     public void mouseClicked(MouseEvent e){}
     public void mouseEntered(MouseEvent e) {}
     public void mouseExited(MouseEvent e) {}
@@ -1065,8 +1063,8 @@ public class PlayMusic implements MouseListener,Serializable {
         }
         catch(Exception e){}
         
-        
     }
+    
     
    
    
