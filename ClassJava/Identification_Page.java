@@ -380,8 +380,6 @@ public class Identification_Page extends JFrame {
                     else{
                         throw new IOException();
                     }
-    
-
                 }
                 else{
                    throw new ClassNotFoundException();
