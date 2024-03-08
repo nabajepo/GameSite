@@ -8,17 +8,7 @@ import javax.swing.border.Border;
 import javax.swing.event.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.*;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutput;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -66,21 +56,17 @@ public class PlayMusic implements MouseListener {
     private final String WHITE="-1";
     private final String GRAY="-8355712";
     private final String BLUE="-16776961";
-    private int oneShow=1;
-   
-
-    
+    //For activity 
+    private ActivityPlayer actPlayList;
+    private File nameFile;
     public PlayMusic(String name,String avatar,int location){
-        File activity=new File("Info//"+name+"//ACTIVITY.txt");
-        if(activity.exists()){
-            showActivity();
-        }
         this.name=name;
         this.avatar=avatar;
         this.location=location;
         audio_Player=false;
+        actPlayList=new ActivityPlayer(name, avatar);
+        nameFile=new File("Info//"+name+"//ACTIVITYPLAYER");
         conditionOfuse();
-        
     }
     private void conditionOfuse(){
         //////////////////////////for frame
@@ -172,6 +158,7 @@ public class PlayMusic implements MouseListener {
         back.setBackground(Color.PINK);
         back.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
+                Condition_and_Availablity.dispose();
                 MainActivity bac=new MainActivity(name, avatar);
             }
         });
@@ -645,11 +632,9 @@ public class PlayMusic implements MouseListener {
 
     }
     private void openAudio(String audioWay){
-        if(oneShow==1){
-            showActivity();
-            oneShow++;
-        }
-        saveNewActivity(audioWay);
+        Date n=new Date();
+        String insertThis="Date : "+n.toString()+" || Activity-name :PlayMusic || File-name : "+audioWay;
+        addActivity(insertThis);
         File audio=new File(audioWay);
         audio_Player=true;
         try{
@@ -989,79 +974,37 @@ public class PlayMusic implements MouseListener {
             s.delete();
          }
     }
-    private void showActivity(){
-        ImageIcon icon=new ImageIcon("ImagesGameSite//ImageProjetEntier.jpg");
-        JButton activity=new JButton("see yours activities");
-        activity.setBackground(Color.green);
-        activity.setFont(new Font(null,Font.BOLD,20));
-        activity.setForeground(Color.WHITE);
-        activity.setBounds(0,0,300,40);
-        activity.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e){
-                if(conditionNewType("To get your historic you have to show where you want to save it and insert a name")==0){
-                    JFileChooser file=new JFileChooser();
-                    if((file.showSaveDialog(null))==0){
-                        saveHistorique(file.getSelectedFile().getAbsolutePath());
-                        JOptionPane.showMessageDialog(null, "You can now check your hsitoric", "Comfirmation", JOptionPane.INFORMATION_MESSAGE);
-                    }
-                }
-            }
-        });
-        ///////////////////////////////////////////////////
-        activityFrame=new JFrame("Activity");
-        activityFrame.setBounds(1085,0,300,100);
-        activityFrame.setIconImage(icon.getImage());
-        activityFrame.add(activity);
-        activityFrame.setVisible(true);
-
-    }
-    private void saveNewActivity(String nameFile){
-        String info="";
-       File activity=new File("Info//"+name+"//ACTIVITY.txt");
-       Date time=new Date();
-       try{
-         if(activity.exists()){
-               FileReader oldFold=new FileReader(activity);
-               int data=oldFold.read();
-               while(data!=-1){
-                 info=info+((char)data);
-                 data=oldFold.read();
-               }
-               oldFold.close();
-               info=info+"\n"+time.toString()+" you play :"+nameFile;
-               FileWriter write=new FileWriter(activity);
-               write.write(info);
-               write.close();
-         }
-         else{
-            activity.createNewFile();
-            info=time.toString()+" you play :"+nameFile;
-            FileWriter write=new FileWriter(activity);
-            write.write(info);
-            write.close();
-         }
-       }
-       catch(Exception v){}
-    }
-    private void saveHistorique(String way){
-        File activity=new File("Info//"+name+"//ACTIVITY.txt");
-        File savein=new File(way+".txt");
-        String info="";
+    private void addActivity(String nameAc){
+        actPlayList.startA();
+        FileOutputStream outP;
+        ObjectOutputStream putIn;
         try{
-            savein.createNewFile();
-            FileReader oldFold=new FileReader(activity);
-               int data=oldFold.read();
-               while(data!=-1){
-                 info=info+((char)data);
-                 data=oldFold.read();
-               }
-               oldFold.close();
-            FileWriter writeInfo=new FileWriter(savein);
-            writeInfo.write(info);
-            writeInfo.close();
-            
+            if(!actPlayList.exist()){
+                outP=new FileOutputStream(nameFile);
+                putIn=new ObjectOutputStream(outP);
+                actPlayList.addActivity(nameAc);
+                putIn.writeObject(actPlayList);
+                putIn.close();
+                outP.close();
+            }
+            else{
+                FileInputStream inP=new FileInputStream(nameFile);
+                ObjectInputStream oIn=new ObjectInputStream(inP);
+                actPlayList=(ActivityPlayer)oIn.readObject();
+                actPlayList.addActivity(nameAc);
+                oIn.close();
+                inP.close();
+                outP=new FileOutputStream(nameFile);
+                putIn=new ObjectOutputStream(outP);
+                putIn.writeObject(actPlayList);
+                putIn.close();
+                outP.close();
+            }
+
         }
-        catch(Exception e){}
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Error during process", "Error", JOptionPane.ERROR_MESSAGE);
+        }
         
     }
     

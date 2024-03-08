@@ -29,10 +29,6 @@ public class ActivityPlayer implements Serializable{
         descript2=descript2+avatar;
         head=null;
         next=null;
-        if(!exist()){
-            Date newPl=new Date();
-            descript3=descript3+newPl.toString();
-            addActivity(line);addActivity(descript);addActivity(descript2);addActivity(descript3);addActivity(line);}
     }
     public void addActivity(String activityname){//Here we add new Activity
         NodeActivity newOne=new NodeActivity(null, activityname, null);
@@ -58,6 +54,12 @@ public class ActivityPlayer implements Serializable{
     public boolean exist(){//Here we check if the file exist to avoid to rewrite name and avatar
         File cuSt=new File("Info//"+namePlayer+"//ACTIVITYPLAYER");
         return cuSt.exists();
+    }
+    public void startA(){
+        if(!exist()){
+            Date newPl=new Date();
+            descript3=descript3+newPl.toString();
+            addActivity(line);addActivity(descript);addActivity(descript2);addActivity(descript3);addActivity(line);}
     }
    
 }

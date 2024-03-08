@@ -2,6 +2,11 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.ObjectInputStream;
 import java.time.zone.ZoneOffsetTransitionRule.TimeDefinition;
 import java.util.Calendar;
 import java.util.Date;
@@ -11,8 +16,10 @@ import java.util.TimerTask;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JProgressBar;
 import javax.swing.border.Border;
 
@@ -28,14 +35,18 @@ public class Preparation_Page extends JFrame {
     private ImageIcon  imageAvatar;
     private Border labelBorder;
     private String nameGam;
+    private JFrame activityFrame;
+    private ActivityPlayer act;
+    private File fileName;
     public Preparation_Page(String name,String avatar){
         logoFrame=new ImageIcon("ImagesGameSite//ImageProjetEntier.jpg");
         imageAvatar=new ImageIcon(avatar);
         labelBorder=BorderFactory.createLineBorder(Color.GREEN,3);
         nameGam=name;
         avatarWay=avatar;
+        act=new ActivityPlayer(name, avatar);
+        fileName=new File("Info//"+name+"//ACTIVITYPLAYER");
         ////////BuildFrame
-        //////////Brouillon to makeFrame
         buildFrame();
         /////////set frame to visible
         this.setVisible(true);
@@ -170,6 +181,9 @@ public class Preparation_Page extends JFrame {
                     load=load+20;
                     data.setText(dataExchange[dataChange]);
                     dataChange++;
+                    if((load==60)&&(act.exist())){
+                       showActivityButton();
+                    }
                 }
                 else{
                     go.setEnabled(true);
@@ -225,6 +239,67 @@ public class Preparation_Page extends JFrame {
         }
         return index;
     }
+    private void showActivityButton(){
+        ImageIcon icon=new ImageIcon("ImagesGameSite//ImageProjetEntier.jpg");
+        JButton activity=new JButton("see yours activities");
+        activity.setBackground(Color.green);
+        activity.setFont(new Font(null,Font.BOLD,20));
+        activity.setForeground(Color.WHITE);
+        activity.setBounds(0,0,300,40);
+        activity.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                if(conditionNewType("To get your historic you have to show where you want to save it and insert a name")==0){
+                    JFileChooser file=new JFileChooser();
+                    if((file.showSaveDialog(null))==0){
+                        saveHistorique(file.getSelectedFile().getAbsolutePath());
+                        JOptionPane.showMessageDialog(null, "You can now check your hsitoric", "Comfirmation", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                }
+            }
+        });
+        ///////////////////////////////////////////////////
+        activityFrame=new JFrame("Activity");
+        activityFrame.setBounds(1085,0,300,100);
+        activityFrame.setIconImage(icon.getImage());
+        activityFrame.add(activity);
+        activityFrame.setVisible(true);
+
+    }
+    private void saveHistorique(String way){///have to fill it;
+        try{
+            FileInputStream k=new FileInputStream(fileName);
+            ObjectInputStream y=new ObjectInputStream(k);
+            act=(ActivityPlayer)y.readObject();
+            writeT(way,act.getInFoActivity());
+            y.close();
+            k.close();
+        }
+        catch(Exception e){JOptionPane.showMessageDialog(null, "Error during process", "Error", JOptionPane.ERROR_MESSAGE);}
+        
+    }
+    private int conditionNewType(String name){
+        String[] condition={"Understood","Cancel"};
+        return JOptionPane.showOptionDialog(null,name, "Information message", 0,JOptionPane.INFORMATION_MESSAGE, null, condition, 0);
+    }
+    private void writeT(String way,String allInfo){
+        File ws=new File(way+".txt");
+        try{
+            FileWriter wrt=new FileWriter(ws);
+            if(!ws.exists()){
+                ws.createNewFile();
+                wrt.write(allInfo);
+                wrt.close();
+            }
+            else{
+                wrt.write(allInfo);
+                wrt.close();
+            }
+
+        }
+        catch(Exception e){JOptionPane.showMessageDialog(null, "Error during process", "Error", JOptionPane.ERROR_MESSAGE);}
+        
+    }
+    
 
 
 
