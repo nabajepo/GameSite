@@ -363,7 +363,7 @@ public class PlayMusic implements MouseListener {
         displayMusic=new JFrame();
         displayMusic.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ImageIcon icon=new ImageIcon("ImagesGameSite//ImageProjetEntier.jpg");
-        ImageIcon imageS=new ImageIcon(imageSinger);//Pour l'image de l'Artiste
+        ImageIcon imageS=new ImageIcon(imageSinger);//for artist  image
         JLabel iconImage=new JLabel();
         iconImage.setBounds(0,0,imageS.getIconWidth(),imageS.getIconHeight());
         iconImage.setIcon(imageS);
@@ -461,10 +461,7 @@ public class PlayMusic implements MouseListener {
                    creationWaiting();
                    WaitLoading();
                    displayMusic.dispose();
-                   //playSection.dispose();
-                  
-                }
-            }
+                }}
         });
         ////////////////////////////////////
         int height=65;

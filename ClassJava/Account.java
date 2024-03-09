@@ -381,10 +381,7 @@ public class Account extends JFrame {
                 insertStream.close();
                 create_account.close();
                 return true;
-                
-
             }
-           
         }
         catch(IOException e){
             JOptionPane.showMessageDialog(avatarChoose, "Can't create your account,because you have a account", "ERROR DURING CREATION", JOptionPane.ERROR_MESSAGE);
