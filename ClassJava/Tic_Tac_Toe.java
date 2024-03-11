@@ -47,7 +47,12 @@ public class Tic_Tac_Toe extends JFrame {
         playAvailable.setForeground(Color.black);
         playAvailable.addActionListener(new ActionListener() {
           public void actionPerformed(ActionEvent e){//To complete
-              System.out.println(player[playAvailable.getSelectedIndex()]);
+             if(playAvailable.getSelectedIndex()==0){
+                playerQuantity=1;
+             }
+             else{
+                playerQuantity=2;
+             }
           }  
         });
         //////////////////////////////////////////////////////////For Button back
@@ -76,7 +81,7 @@ public class Tic_Tac_Toe extends JFrame {
         frameChoose.add(backToMain);
         frameChoose.add(continueT);
         frameChoose.setVisible(true);
-         return 0;
+         return playerQuantity;
     }
     
 }
