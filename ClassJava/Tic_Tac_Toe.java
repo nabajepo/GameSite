@@ -23,10 +23,10 @@ public class Tic_Tac_Toe extends JFrame {
         this.namePlayerAvatar=avatar;
         icon=new ImageIcon("ImagesGameSite//ImageProjetEntier.jpg");
         actTic=new ActivityPlayer(name, avatar);
+        playerQuantity=1;
         howManyPlayer();
-        //System.out.println(howManyPlayer());
     }
-    private int howManyPlayer(){/////Here we choose how many Are going to play
+    private void howManyPlayer(){/////Here we choose how many Are going to play
         ///////////////////////////////////////////////////for Logo label
         ImageIcon avatP=new ImageIcon(namePlayerAvatar);
         avatarLabel=new JLabel();
@@ -67,6 +67,17 @@ public class Tic_Tac_Toe extends JFrame {
         continueT.setBackground(Color.GREEN);
         continueT.setForeground(Color.WHITE);
         continueT.setFont(new Font(null,Font.ROMAN_BASELINE,20));
+        continueT.addActionListener(new ActionListener() {
+             public void actionPerformed(ActionEvent e){
+                playAvailable.setEnabled(false);
+                if(playerQuantity==2){
+                   TooPlayer();
+                }
+                else{
+                   OnePlayer();
+                }
+             }
+        });
         ////////////////////////////////////////////////////////// for Frame
         JFrame frameChoose=new JFrame("Choose how much player");
         frameChoose.setIconImage(icon.getImage());
@@ -81,7 +92,14 @@ public class Tic_Tac_Toe extends JFrame {
         frameChoose.add(backToMain);
         frameChoose.add(continueT);
         frameChoose.setVisible(true);
-         return playerQuantity;
+    }
+    private void chooseTool(){
+    }//:Here we choose what we play with
+    private void TooPlayer(){
+      System.out.println("We have too players");
+    }
+    private void OnePlayer(){
+      System.out.println("We have one player");
     }
     
 }
