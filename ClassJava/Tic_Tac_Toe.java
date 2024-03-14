@@ -137,9 +137,16 @@ public class Tic_Tac_Toe extends JFrame {
       while(true){
          chooseTool=JOptionPane.showInputDialog("Choose your tool X or O").toUpperCase().trim();
          if(chooseTool.equals(o)||chooseTool.equals(x)){
-            JOptionPane.showMessageDialog(null, "You chose player :"+chooseTool, "Player", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "You chose player : "+chooseTool, "Player", JOptionPane.INFORMATION_MESSAGE);
             break;
          }
+         
+      }
+      if(JOptionPane.showConfirmDialog(null,"Would you like to start","Who start",JOptionPane.YES_NO_CANCEL_OPTION)==0){
+         System.out.println("You start");
+      }
+      else{
+         System.out.println("You don't start");
       }
 
       
