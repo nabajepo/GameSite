@@ -33,6 +33,7 @@ public class Tic_Tac_Toe extends JFrame {
         howManyPlayer();
     }
     private void howManyPlayer(){/////Here we choose how many Are going to play
+      JFrame frameChoose=new JFrame("Choose how much player");
       /////////////////////////////////////////////////////fo level(1)
        String[] nivAv={niv1,niv2};
        JComboBox<String> niv=new JComboBox<>(nivAv);
@@ -101,12 +102,12 @@ public class Tic_Tac_Toe extends JFrame {
                    TooPlayer();
                 }
                 else{
-                   //OnePlayer(nivAv[niv.getSelectedIndex()]);
+                   frameChoose.dispose();
+                   OnePlayer(nivAv[niv.getSelectedIndex()]);
                 }
              }
         });
         ////////////////////////////////////////////////////////// for Frame
-        JFrame frameChoose=new JFrame("Choose how much player");
         frameChoose.setIconImage(icon.getImage());
         frameChoose.setBounds(440,90,550,390);
         frameChoose.setResizable(false);
@@ -133,8 +134,12 @@ public class Tic_Tac_Toe extends JFrame {
       String chooseTool="";
       String x="X";
       String o="O";
-      while(chooseTool!=x ||chooseTool!=o){
+      while(true){
          chooseTool=JOptionPane.showInputDialog("Choose your tool X or O").toUpperCase().trim();
+         if(chooseTool.equals(o)||chooseTool.equals(x)){
+            JOptionPane.showMessageDialog(null, "You chose player :"+chooseTool, "Player", JOptionPane.INFORMATION_MESSAGE);
+            break;
+         }
       }
 
       
