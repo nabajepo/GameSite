@@ -148,9 +148,12 @@ public class Tic_Tac_Toe extends JFrame {
       else{
          System.out.println("You don't start");
       }
-
-      
     }
+    private void makeSecondPlay(){}
+    private void playAlone(){
+
+    }
+    private void playTwo(String nameSecondPlay){}
     private void addActivity(String nameAc){
         actTic.startA();
         FileOutputStream outP;
