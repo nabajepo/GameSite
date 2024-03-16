@@ -205,7 +205,6 @@ public class Account extends JFrame {
             }
         });
         return avatarChoose;                           
-        
     }
     private JButton creactionAccButton(){
         create=new JButton();

@@ -12,6 +12,8 @@ public class Tic_Tac_Toe extends JFrame {
     private JComboBox<String> playAvailable;
     private JLabel avatarLabel;
     private JLabel namePly;
+    private JLabel avatarNewPlayer;
+    private JFrame newP;
     ////////////////////////////////////////
     private String namePlayer;
     private String newPlayer;
@@ -99,6 +101,7 @@ public class Tic_Tac_Toe extends JFrame {
                 playAvailable.setEnabled(false);
                 niv.setEnabled(false);
                 if(playerQuantity==2){
+                  frameChoose.dispose();
                    TooPlayer();
                 }
                 else{
@@ -126,7 +129,19 @@ public class Tic_Tac_Toe extends JFrame {
     //private void chooseTool(){
     //}//:Here we choose what we play with
     private void TooPlayer(){
-      System.out.println("We have too players");
+      newP=new JFrame("Player Too"); 
+      newP.setIconImage(icon.getImage());
+      newP.getContentPane().setBackground(Color.GRAY);
+      newP.setBounds(440,90,550,390);
+      newP.setLayout(null);
+      ///////////////////////////////
+      JLabel newPlayer=new JLabel("New Player :");
+      newPlayer.setBackground(Color.GRAY);
+      newPlayer.setFont(new Font(null,Font.BOLD,20));
+      //////////////////////////////
+      newP.setVisible(true);
+
+
 
     }
     private void OnePlayer(String getNiv){
@@ -145,15 +160,32 @@ public class Tic_Tac_Toe extends JFrame {
       if(JOptionPane.showConfirmDialog(null,"Would you like to start","Who start",JOptionPane.YES_NO_CANCEL_OPTION)==0){
          System.out.println("You start");
       }
+      else if(JOptionPane.showConfirmDialog(null,"Would you like to start","Who start",JOptionPane.YES_NO_CANCEL_OPTION)==2){
+         Tic_Tac_Toe bacN=new Tic_Tac_Toe(namePlayer, namePlayerAvatar);
+      }
       else{
          System.out.println("You don't start");
       }
     }
-    private void makeSecondPlay(){}
-    private void playAlone(){
-
-    }
-    private void playTwo(String nameSecondPlay){}
+    private void avatarDisplay(ImageIcon image){
+      avatarNewPlayer.setBackground(Color.BLACK);
+      avatarNewPlayer.setIcon(image);
+      avatarNewPlayer.setBounds(340,295,image.getIconWidth(),image.getIconHeight());
+      newP.add(avatarNewPlayer);
+  }
+  private JComboBox<String> ChooseAvatarTic(){
+      String[] avatar={"Avatar1","Avatar2","Avatar3","Avatar4","Avatar5","Avatar6","Avatar7","Avatar8"};
+      playAvailable=new JComboBox<>(avatar);
+      playAvailable.setBackground(Color.PINK);
+      playAvailable.setBounds(231,440,300,40);
+      avatarDisplay(new ImageIcon("AvatarImage//Avatar1.PNG"));
+      playAvailable.addActionListener(new ActionListener() {
+          public void actionPerformed(ActionEvent e){
+              avatarDisplay(new ImageIcon("AvatarImage//"+playAvailable.getSelectedItem()+".PNG"));
+          }
+      });
+      return playAvailable;                           
+  }
     private void addActivity(String nameAc){
         actTic.startA();
         FileOutputStream outP;
