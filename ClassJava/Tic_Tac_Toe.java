@@ -135,10 +135,21 @@ public class Tic_Tac_Toe extends JFrame {
       newP.setBounds(440,90,550,390);
       newP.setLayout(null);
       ///////////////////////////////
-      JLabel newPlayer=new JLabel("New Player :");
+      JLabel newPlayer=new JLabel("Second Player name:");
       newPlayer.setBackground(Color.GRAY);
       newPlayer.setFont(new Font(null,Font.BOLD,20));
+      newPlayer.setForeground(Color.BLACK);
+      newPlayer.setBounds(0,10,200,40);
       //////////////////////////////
+      JTextField insertName=new JTextField();
+      insertName.setFont(new Font(null,Font.ITALIC,20));
+      insertName.setForeground(Color.BLACK);
+      insertName.setBackground(Color.WHITE);
+      insertName.setBounds(201,18,300,30);
+      insertName.setCaretColor(Color.BLACK);
+      /////////////////////////////
+      newP.add(newPlayer);
+      newP.add(insertName);
       newP.setVisible(true);
 
 
