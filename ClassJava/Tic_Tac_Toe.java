@@ -140,16 +140,24 @@ public class Tic_Tac_Toe extends JFrame {
       newPlayer.setFont(new Font(null,Font.BOLD,20));
       newPlayer.setForeground(Color.BLACK);
       newPlayer.setBounds(0,10,200,40);
+      /////////////////////////////////
+      JLabel labelAv=new JLabel("Choose your avatar:");
+      labelAv.setBackground(Color.GRAY);
+      labelAv.setFont(new Font(null,Font.BOLD,20));
+      labelAv.setForeground(Color.BLACK);
+      labelAv.setBounds(0,200,200,30);
       //////////////////////////////
       JTextField insertName=new JTextField();
       insertName.setFont(new Font(null,Font.ITALIC,20));
       insertName.setForeground(Color.BLACK);
       insertName.setBackground(Color.WHITE);
       insertName.setBounds(201,18,300,30);
-      insertName.setCaretColor(Color.BLACK);
+      insertName.setCaretColor(Color.GREEN);
       /////////////////////////////
       newP.add(newPlayer);
       newP.add(insertName);
+      newP.add(labelAv);
+      newP.add(ChooseAvatarTic());
       newP.setVisible(true);
 
 
@@ -181,14 +189,15 @@ public class Tic_Tac_Toe extends JFrame {
     private void avatarDisplay(ImageIcon image){
       avatarNewPlayer.setBackground(Color.BLACK);
       avatarNewPlayer.setIcon(image);
-      avatarNewPlayer.setBounds(340,295,image.getIconWidth(),image.getIconHeight());
+      avatarNewPlayer.setBounds(310,60,image.getIconWidth(),image.getIconHeight());
       newP.add(avatarNewPlayer);
   }
   private JComboBox<String> ChooseAvatarTic(){
       String[] avatar={"Avatar1","Avatar2","Avatar3","Avatar4","Avatar5","Avatar6","Avatar7","Avatar8"};
       playAvailable=new JComboBox<>(avatar);
-      playAvailable.setBackground(Color.PINK);
-      playAvailable.setBounds(231,440,300,40);
+      playAvailable.setBackground(Color.GREEN);
+      playAvailable.setBounds(201,200,300,30);
+      avatarNewPlayer=new JLabel();
       avatarDisplay(new ImageIcon("AvatarImage//Avatar1.PNG"));
       playAvailable.addActionListener(new ActionListener() {
           public void actionPerformed(ActionEvent e){
