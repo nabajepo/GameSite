@@ -131,7 +131,7 @@ public class Tic_Tac_Toe extends JFrame {
     private void TooPlayer(){
       newP=new JFrame("Player Too"); 
       newP.setIconImage(icon.getImage());
-      newP.getContentPane().setBackground(Color.GRAY);
+      newP.getContentPane().setBackground(Color.gray);
       newP.setBounds(440,90,550,390);
       newP.setLayout(null);
       ///////////////////////////////
@@ -139,25 +139,50 @@ public class Tic_Tac_Toe extends JFrame {
       newPlayer.setBackground(Color.GRAY);
       newPlayer.setFont(new Font(null,Font.BOLD,20));
       newPlayer.setForeground(Color.BLACK);
-      newPlayer.setBounds(0,10,200,40);
+      newPlayer.setBounds(5,10,200,40);
       /////////////////////////////////
       JLabel labelAv=new JLabel("Choose your avatar:");
       labelAv.setBackground(Color.GRAY);
       labelAv.setFont(new Font(null,Font.BOLD,20));
       labelAv.setForeground(Color.BLACK);
-      labelAv.setBounds(0,200,200,30);
+      labelAv.setBounds(5,200,200,30);
       //////////////////////////////
       JTextField insertName=new JTextField();
       insertName.setFont(new Font(null,Font.ITALIC,20));
       insertName.setForeground(Color.BLACK);
       insertName.setBackground(Color.WHITE);
-      insertName.setBounds(201,18,300,30);
+      insertName.setBounds(227,18,300,30);
       insertName.setCaretColor(Color.GREEN);
+      /////////////////////////////
+      JButton back=new JButton("back");
+        back.setBounds(5,300,185,40);
+        back.setBackground(Color.ORANGE);
+        back.setForeground(Color.WHITE);
+        back.setFont(new Font(null,Font.ROMAN_BASELINE,20));
+        back.addActionListener(new ActionListener() {
+           public void actionPerformed(ActionEvent e){
+              //MainActivity back=new MainActivity(namePlayer, namePlayerAvatar);
+           }
+        });
+        ////////////////////////////////////
+        JButton continu=new JButton("Continue");
+        continu.setBounds(340,300,185,40);
+        continu.setBackground(Color.GREEN);
+        continu.setForeground(Color.WHITE);
+        continu.setFont(new Font(null,Font.ROMAN_BASELINE,20));
+        continu.addActionListener(new ActionListener() {
+             public void actionPerformed(ActionEvent e){
+                
+             }
+        });
+      
       /////////////////////////////
       newP.add(newPlayer);
       newP.add(insertName);
       newP.add(labelAv);
       newP.add(ChooseAvatarTic());
+      newP.add(back);
+      newP.add(continu);
       newP.setVisible(true);
 
 
@@ -189,14 +214,14 @@ public class Tic_Tac_Toe extends JFrame {
     private void avatarDisplay(ImageIcon image){
       avatarNewPlayer.setBackground(Color.BLACK);
       avatarNewPlayer.setIcon(image);
-      avatarNewPlayer.setBounds(310,60,image.getIconWidth(),image.getIconHeight());
+      avatarNewPlayer.setBounds(340,57,image.getIconWidth(),image.getIconHeight());
       newP.add(avatarNewPlayer);
   }
   private JComboBox<String> ChooseAvatarTic(){
       String[] avatar={"Avatar1","Avatar2","Avatar3","Avatar4","Avatar5","Avatar6","Avatar7","Avatar8"};
       playAvailable=new JComboBox<>(avatar);
       playAvailable.setBackground(Color.GREEN);
-      playAvailable.setBounds(201,200,300,30);
+      playAvailable.setBounds(226,200,300,30);
       avatarNewPlayer=new JLabel();
       avatarDisplay(new ImageIcon("AvatarImage//Avatar1.PNG"));
       playAvailable.addActionListener(new ActionListener() {
