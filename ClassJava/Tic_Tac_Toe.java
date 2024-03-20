@@ -162,6 +162,8 @@ public class Tic_Tac_Toe extends JFrame {
         back.addActionListener(new ActionListener() {
            public void actionPerformed(ActionEvent e){
               //MainActivity back=new MainActivity(namePlayer, namePlayerAvatar);
+              newP.dispose();
+              Tic_Tac_Toe bac=new Tic_Tac_Toe(namePlayer, namePlayerAvatar);
            }
         });
         ////////////////////////////////////
@@ -172,7 +174,8 @@ public class Tic_Tac_Toe extends JFrame {
         continu.setFont(new Font(null,Font.ROMAN_BASELINE,20));
         continu.addActionListener(new ActionListener() {
              public void actionPerformed(ActionEvent e){
-                
+                newP.dispose();
+                System.out.println("Start");
              }
         });
       
