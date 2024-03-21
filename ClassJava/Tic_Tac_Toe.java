@@ -147,7 +147,7 @@ public class Tic_Tac_Toe extends JFrame {
       labelAv.setForeground(Color.BLACK);
       labelAv.setBounds(5,200,200,30);
       //////////////////////////////
-      JTextField insertName=new JTextField();
+      JTextField insertName=new JTextField("need at least and more 8 chars");
       insertName.setFont(new Font(null,Font.ITALIC,20));
       insertName.setForeground(Color.BLACK);
       insertName.setBackground(Color.WHITE);
@@ -161,9 +161,8 @@ public class Tic_Tac_Toe extends JFrame {
         back.setFont(new Font(null,Font.ROMAN_BASELINE,20));
         back.addActionListener(new ActionListener() {
            public void actionPerformed(ActionEvent e){
-              //MainActivity back=new MainActivity(namePlayer, namePlayerAvatar);
               newP.dispose();
-              Tic_Tac_Toe bac=new Tic_Tac_Toe(namePlayer, namePlayerAvatar);
+              howManyPlayer();
            }
         });
         ////////////////////////////////////
@@ -174,8 +173,14 @@ public class Tic_Tac_Toe extends JFrame {
         continu.setFont(new Font(null,Font.ROMAN_BASELINE,20));
         continu.addActionListener(new ActionListener() {
              public void actionPerformed(ActionEvent e){
-                newP.dispose();
-                System.out.println("Start");
+                String[] nameSec=insertName.getText().trim().split("");
+                if(nameSec.length>8||nameSec.length<8){
+                  JOptionPane.showMessageDialog(insertName, "We need 8 chars", "Error about second player name", JOptionPane.ERROR_MESSAGE);
+                }
+                else{
+                  newP.dispose();
+                  System.out.println("Let's Start");
+                }
              }
         });
       
@@ -234,6 +239,7 @@ public class Tic_Tac_Toe extends JFrame {
       });
       return playAvailable;                           
   }
+  private void letPlayTic(int players){}
     private void addActivity(String nameAc){
         actTic.startA();
         FileOutputStream outP;
