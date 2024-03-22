@@ -180,6 +180,7 @@ public class Tic_Tac_Toe extends JFrame {
                 else{
                   newP.dispose();
                   System.out.println("Let's Start");
+                  letPlayTic(2,"person1");
                 }
              }
         });
@@ -209,13 +210,16 @@ public class Tic_Tac_Toe extends JFrame {
          }
          
       }
-      if(JOptionPane.showConfirmDialog(null,"Would you like to start","Who start",JOptionPane.YES_NO_CANCEL_OPTION)==0){
+      int startWith=JOptionPane.showConfirmDialog(null,"Would you like to start","Who start",JOptionPane.YES_NO_CANCEL_OPTION);
+      if(startWith==0){
+         letPlayTic(1,"person1");
          System.out.println("You start");
       }
-      else if(JOptionPane.showConfirmDialog(null,"Would you like to start","Who start",JOptionPane.YES_NO_CANCEL_OPTION)==2){
+      else if(startWith==2){
          Tic_Tac_Toe bacN=new Tic_Tac_Toe(namePlayer, namePlayerAvatar);
       }
       else{
+         letPlayTic(1,"person2");
          System.out.println("You don't start");
       }
     }
@@ -239,7 +243,14 @@ public class Tic_Tac_Toe extends JFrame {
       });
       return playAvailable;                           
   }
-  private void letPlayTic(int players){}
+  private void letPlayTic(int players,String startWith){
+   this.setTitle("Let's Play");
+   this.setIconImage(icon.getImage());
+   this.setResizable(false);
+    this.setBounds(440,90,600,600);
+    ///////////////////////////////////////////////////
+    this.setVisible(true);
+  }
     private void addActivity(String nameAc){
         actTic.startA();
         FileOutputStream outP;
