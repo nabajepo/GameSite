@@ -1,5 +1,7 @@
+import java.awt.Button;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
@@ -24,7 +26,6 @@ public class Tic_Tac_Toe extends JFrame {
     private File nameFile;
     private String niv1="EASY";
     private String niv2="DIFFICULT";
-    private String niv;
     public Tic_Tac_Toe(String name,String avatar){
         this.namePlayer=name;
         this.namePlayerAvatar=avatar;
@@ -180,7 +181,7 @@ public class Tic_Tac_Toe extends JFrame {
                 else{
                   newP.dispose();
                   System.out.println("Let's Start");
-                  letPlayTic(2,"person1");
+                  letPlayTicWithTwo("person1");
                 }
              }
         });
@@ -212,14 +213,14 @@ public class Tic_Tac_Toe extends JFrame {
       }
       int startWith=JOptionPane.showConfirmDialog(null,"Would you like to start","Who start",JOptionPane.YES_NO_CANCEL_OPTION);
       if(startWith==0){
-         letPlayTic(1,"person1");
+         letPlayTicWithOne("person1",getNiv);
          System.out.println("You start");
       }
       else if(startWith==2){
          Tic_Tac_Toe bacN=new Tic_Tac_Toe(namePlayer, namePlayerAvatar);
       }
       else{
-         letPlayTic(1,"person2");
+         letPlayTicWithOne("person2",getNiv);
          System.out.println("You don't start");
       }
     }
@@ -243,11 +244,47 @@ public class Tic_Tac_Toe extends JFrame {
       });
       return playAvailable;                           
   }
-  private void letPlayTic(int players,String startWith){
-   this.setTitle("Let's Play");
+  private void letPlayTicWithOne(String startWith,String level){
+   System.out.println("The level is "+level);
+   ///////////////////////////////////////////////////
+   this.setTitle("Let's Play with robot");
    this.setIconImage(icon.getImage());
    this.setResizable(false);
     this.setBounds(440,90,600,600);
+    this.getContentPane().setBackground(Color.WHITE);
+    this.setLayout(new GridLayout(3,3,10,10));
+    JButton[] allButtons={new JButton("1"),new JButton("2"),new JButton("3"),new JButton("4"),new JButton("5"),new JButton("6"),new JButton("7"),new JButton("8"),new JButton("9")};
+    for(int index=0;index<allButtons.length;index++){
+      JButton loc=allButtons[index];
+      this.add(loc);
+      loc.addActionListener(new ActionListener() {
+         public void actionPerformed(ActionEvent e){
+            System.out.println("You touch button  "+loc.getText());
+         }
+      });
+      
+    }
+    ///////////////////////////////////////////////////
+    this.setVisible(true);
+  }
+  private void letPlayTicWithTwo(String startWith){
+   this.setTitle("Let's Play with another person");
+   this.setIconImage(icon.getImage());
+   this.setResizable(false);
+    this.setBounds(440,90,600,600);
+    this.getContentPane().setBackground(Color.WHITE);
+    this.setLayout(new GridLayout(3,3,10,10));
+    JButton[] allButtons={new JButton("1"),new JButton("2"),new JButton("3"),new JButton("4"),new JButton("5"),new JButton("6"),new JButton("7"),new JButton("8"),new JButton("9")};
+    for(int index=0;index<allButtons.length;index++){
+      JButton loc=allButtons[index];
+      this.add(loc);
+      loc.addActionListener(new ActionListener() {
+         public void actionPerformed(ActionEvent e){
+            System.out.println("You touch button  "+loc.getText());
+         }
+      });
+      
+    }
     ///////////////////////////////////////////////////
     this.setVisible(true);
   }
