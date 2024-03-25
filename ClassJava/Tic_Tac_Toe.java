@@ -18,7 +18,7 @@ public class Tic_Tac_Toe extends JFrame {
     private JFrame newP;
     ////////////////////////////////////////
     private String namePlayer;
-    private String newPlayer;
+    private String newPlayerName;
     private String namePlayerAvatar;
     private String newPlayerAvatar;
     private int playerQuantity;
@@ -179,8 +179,9 @@ public class Tic_Tac_Toe extends JFrame {
                   JOptionPane.showMessageDialog(insertName, "We need 8 chars", "Error about second player name", JOptionPane.ERROR_MESSAGE);
                 }
                 else{
+                  newPlayerName=insertName.getText().trim();
+                  newPlayerAvatar="AvatarImage//"+playAvailable.getSelectedItem()+".PNG";
                   newP.dispose();
-                  System.out.println("Let's Start");
                   letPlayTicWithTwo("person1");
                 }
              }
@@ -246,6 +247,7 @@ public class Tic_Tac_Toe extends JFrame {
   }
   private void letPlayTicWithOne(String startWith,String level){
    System.out.println("The level is "+level);
+   progressionBar(namePlayerAvatar, "AvatarImage//robot.PNG");
    ///////////////////////////////////////////////////
    this.setTitle("Let's Play with robot");
    this.setIconImage(icon.getImage());
@@ -268,6 +270,7 @@ public class Tic_Tac_Toe extends JFrame {
     this.setVisible(true);
   }
   private void letPlayTicWithTwo(String startWith){
+   progressionBar(namePlayerAvatar, newPlayerAvatar);
    this.setTitle("Let's Play with another person");
    this.setIconImage(icon.getImage());
    this.setResizable(false);
@@ -287,6 +290,9 @@ public class Tic_Tac_Toe extends JFrame {
     }
     ///////////////////////////////////////////////////
     this.setVisible(true);
+  }
+  private void progressionBar(String avatar1,String avatar2){
+   System.out.println("L'avatar 1 est "+avatar1+" est l'avatar 2 est "+avatar2);
   }
     private void addActivity(String nameAc){
         actTic.startA();
