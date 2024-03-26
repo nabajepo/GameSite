@@ -26,6 +26,7 @@ public class Tic_Tac_Toe extends JFrame {
     private File nameFile;
     private String niv1="EASY";
     private String niv2="DIFFICULT";
+    private JFrame frameR;
     public Tic_Tac_Toe(String name,String avatar){
         this.namePlayer=name;
         this.namePlayerAvatar=avatar;
@@ -252,7 +253,7 @@ public class Tic_Tac_Toe extends JFrame {
    this.setTitle("Let's Play with robot");
    this.setIconImage(icon.getImage());
    this.setResizable(false);
-    this.setBounds(440,90,600,600);
+    this.setBounds(400,90,600,600);
     this.getContentPane().setBackground(Color.WHITE);
     this.setLayout(new GridLayout(3,3,10,10));
     JButton[] allButtons={new JButton("1"),new JButton("2"),new JButton("3"),new JButton("4"),new JButton("5"),new JButton("6"),new JButton("7"),new JButton("8"),new JButton("9")};
@@ -274,7 +275,7 @@ public class Tic_Tac_Toe extends JFrame {
    this.setTitle("Let's Play with another person");
    this.setIconImage(icon.getImage());
    this.setResizable(false);
-    this.setBounds(440,90,600,600);
+    this.setBounds(420,90,600,600);
     this.getContentPane().setBackground(Color.WHITE);
     this.setLayout(new GridLayout(3,3,10,10));
     JButton[] allButtons={new JButton("1"),new JButton("2"),new JButton("3"),new JButton("4"),new JButton("5"),new JButton("6"),new JButton("7"),new JButton("8"),new JButton("9")};
@@ -292,7 +293,21 @@ public class Tic_Tac_Toe extends JFrame {
     this.setVisible(true);
   }
   private void progressionBar(String avatar1,String avatar2){
-   System.out.println("L'avatar 1 est "+avatar1+" est l'avatar 2 est "+avatar2);
+   //System.out.println("L'avatar 1 est "+avatar1+" est l'avatar 2 est "+avatar2);
+   frameR=new JFrame("Progression Winner");
+   frameR.setBounds(1050,90,300,600);
+   frameR.setIconImage(icon.getImage());
+   frameR.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+   frameR.setLayout(null);
+   //////////////////////////////////////
+   ImageIcon av1=new ImageIcon(avatar1);
+   JLabel ava1=new JLabel();
+   ava1.setIcon(av1);
+   ava1.setBounds(100,10,av1.getIconWidth(),av1.getIconHeight());
+   //////////////////////////////////////////
+   frameR.add(ava1);
+   frameR.setVisible(true);
+
   }
     private void addActivity(String nameAc){
         actTic.startA();
