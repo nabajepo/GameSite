@@ -45,14 +45,18 @@ public class Tic_Tac_Toe extends JFrame {
         ImageIcon avatP=new ImageIcon(namePlayerAvatar);
         avatarLabel=new JLabel();
         avatarLabel.setIcon(avatP);
-        avatarLabel.setBounds(240,5,avatP.getIconWidth(),avatP.getIconHeight());
+        avatarLabel.setBounds(230,5,avatP.getIconWidth(),avatP.getIconHeight());
         //////////////////////////////////////////////////For name
         namePly=new JLabel(namePlayer);
-        namePly.setBounds(210,avatarLabel.getHeight()+5,150,25);
-        namePly.setForeground(Color.BLACK);
+        namePly.setBounds(avatarLabel.getX()+avatarLabel.getWidth(),5,avatP.getIconWidth()+5,25);
+        namePly.setForeground(Color.WHITE);
         namePly.setBackground(Color.GRAY);
         namePly.setFont(new Font(null,Font.BOLD,20));
         namePly.setHorizontalAlignment(JLabel.CENTER);
+        namePly.setHorizontalTextPosition(JLabel.CENTER);
+        namePly.setVerticalAlignment(JLabel.CENTER);
+        namePly.setVerticalTextPosition(JLabel.CENTER);
+        namePly.setBorder(BorderFactory.createLineBorder(Color.WHITE,3));
         /////////////////////////////////////////////////// for Combox
         String[] player={"1 player","2 players"};
         playAvailable=new JComboBox<>(player);
@@ -293,22 +297,31 @@ public class Tic_Tac_Toe extends JFrame {
     this.setVisible(true);
   }
   private void progressionBar(String avatar1,String avatar2){
-   //System.out.println("L'avatar 1 est "+avatar1+" est l'avatar 2 est "+avatar2);
+   ImageIcon av1=new ImageIcon(avatar1);
+   ImageIcon av2=new ImageIcon(avatar2);
+   //////////////////////////////////////////////////////////
    frameR=new JFrame("Progression Winner");
-   frameR.setBounds(1050,90,300,600);
+   frameR.setBounds(1050,90,310,600);
    frameR.setIconImage(icon.getImage());
    frameR.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
    frameR.setLayout(null);
    //////////////////////////////////////
-   ImageIcon av1=new ImageIcon(avatar1);
+   
    JLabel ava1=new JLabel();
    ava1.setIcon(av1);
-   ava1.setBounds(100,10,av1.getIconWidth(),av1.getIconHeight());
+   ava1.setBounds(0,10,av1.getIconWidth(),av1.getIconHeight());
    //////////////////////////////////////////
+   
+   JLabel ava2=new JLabel();
+   ava2.setIcon(av2);
+   ava2.setBounds(0,300,av2.getIconWidth(),av2.getIconHeight());
+   /////////////////////////////////////////
    frameR.add(ava1);
+   frameR.add(ava2);
    frameR.setVisible(true);
 
   }
+  
     private void addActivity(String nameAc){
         actTic.startA();
         FileOutputStream outP;
