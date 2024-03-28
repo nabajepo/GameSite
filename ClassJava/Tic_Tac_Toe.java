@@ -220,14 +220,16 @@ public class Tic_Tac_Toe extends JFrame {
       int startWith=JOptionPane.showConfirmDialog(null,"Would you like to start","Who start",JOptionPane.YES_NO_CANCEL_OPTION);
       if(startWith==0){
          letPlayTicWithOne("person1",getNiv);
-         System.out.println("You start");
+         newPlayerName="robot";
+         
       }
       else if(startWith==2){
          Tic_Tac_Toe bacN=new Tic_Tac_Toe(namePlayer, namePlayerAvatar);
       }
       else{
          letPlayTicWithOne("person2",getNiv);
-         System.out.println("You don't start");
+         newPlayerName="robot";
+         
       }
     }
     private void avatarDisplay(ImageIcon image){
@@ -253,6 +255,7 @@ public class Tic_Tac_Toe extends JFrame {
   private void letPlayTicWithOne(String startWith,String level){
    System.out.println("The level is "+level);
    progressionBar(namePlayerAvatar, "AvatarImage//robot.PNG");
+   
    ///////////////////////////////////////////////////
    this.setTitle("Let's Play with robot");
    this.setIconImage(icon.getImage());
@@ -305,19 +308,30 @@ public class Tic_Tac_Toe extends JFrame {
    frameR.setIconImage(icon.getImage());
    frameR.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
    frameR.setLayout(null);
+   frameR.getContentPane().setBackground(Color.gray);;
    //////////////////////////////////////
    
    JLabel ava1=new JLabel();
    ava1.setIcon(av1);
    ava1.setBounds(0,10,av1.getIconWidth(),av1.getIconHeight());
+   namePly.setBounds(av1.getIconWidth()+5,10,100,25);
    //////////////////////////////////////////
    
    JLabel ava2=new JLabel();
    ava2.setIcon(av2);
-   ava2.setBounds(0,300,av2.getIconWidth(),av2.getIconHeight());
+   ava2.setBounds(0,250,av2.getIconWidth(),av2.getIconHeight());
+   avatarNewPlayer.setBounds(av2.getIconWidth()+5,250,100,25);
+   avatarNewPlayer.setBorder(BorderFactory.createLineBorder(Color.WHITE,3));
+   avatarNewPlayer.setForeground(Color.WHITE);
+   avatarNewPlayer.setBackground(Color.GRAY);
+   avatarNewPlayer.setFont(new Font(null,Font.BOLD,20));
+   avatarNewPlayer.setIcon(null);
+   avatarNewPlayer.setText(newPlayerName);
    /////////////////////////////////////////
    frameR.add(ava1);
+   frameR.add(namePly);
    frameR.add(ava2);
+   frameR.add(avatarNewPlayer);
    frameR.setVisible(true);
 
   }
