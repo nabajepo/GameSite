@@ -1,10 +1,17 @@
 import java.awt.Button;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
+
+import java.util.Calendar;
+import java.util.Random;
+import java.util.TimerTask;
+import java.util.Date;
+import java.util.Timer;
 
 import javax.swing.*;
 public class Tic_Tac_Toe extends JFrame {
@@ -16,6 +23,10 @@ public class Tic_Tac_Toe extends JFrame {
     private JLabel namePly;
     private JLabel avatarNewPlayer;
     private JFrame newP;
+    private JProgressBar pl1;
+    private JProgressBar pl2;
+    private JLabel count;
+    private JFrame startCount;
     ////////////////////////////////////////
     private String namePlayer;
     private String newPlayerName;
@@ -34,6 +45,11 @@ public class Tic_Tac_Toe extends JFrame {
         actTic=new ActivityPlayer(name, avatar);
         playerQuantity=1;
         nameFile=new File("Info//"+name+"//ACTIVITYPLAYER");
+        avatarNewPlayer=new JLabel();
+        pl1=new JProgressBar();
+        pl1.setValue(10);
+        pl2=new JProgressBar();
+        pl2.setValue(10);
         howManyPlayer();
     }
     private void howManyPlayer(){/////Here we choose how many Are going to play
@@ -187,7 +203,7 @@ public class Tic_Tac_Toe extends JFrame {
                   newPlayerName=insertName.getText().trim();
                   newPlayerAvatar="AvatarImage//"+playAvailable.getSelectedItem()+".PNG";
                   newP.dispose();
-                  letPlayTicWithTwo("person1");
+                  letPlayTicWithTwo(startWithP());
                 }
              }
         });
@@ -217,20 +233,9 @@ public class Tic_Tac_Toe extends JFrame {
          }
          
       }
-      int startWith=JOptionPane.showConfirmDialog(null,"Would you like to start","Who start",JOptionPane.YES_NO_CANCEL_OPTION);
-      if(startWith==0){
-         letPlayTicWithOne("person1",getNiv);
-         newPlayerName="robot";
-         
-      }
-      else if(startWith==2){
-         Tic_Tac_Toe bacN=new Tic_Tac_Toe(namePlayer, namePlayerAvatar);
-      }
-      else{
-         letPlayTicWithOne("person2",getNiv);
-         newPlayerName="robot";
-         
-      }
+      newPlayerName="robot";
+      letPlayTicWithOne(startWithP(),getNiv);
+      
     }
     private void avatarDisplay(ImageIcon image){
       avatarNewPlayer.setBackground(Color.BLACK);
@@ -243,7 +248,6 @@ public class Tic_Tac_Toe extends JFrame {
       playAvailable=new JComboBox<>(avatar);
       playAvailable.setBackground(Color.GREEN);
       playAvailable.setBounds(226,200,300,30);
-      avatarNewPlayer=new JLabel();
       avatarDisplay(new ImageIcon("AvatarImage//Avatar1.PNG"));
       playAvailable.addActionListener(new ActionListener() {
           public void actionPerformed(ActionEvent e){
@@ -254,8 +258,8 @@ public class Tic_Tac_Toe extends JFrame {
   }
   private void letPlayTicWithOne(String startWith,String level){
    System.out.println("The level is "+level);
+   System.out.println("We start with :"+startWith);
    progressionBar(namePlayerAvatar, "AvatarImage//robot.PNG");
-   
    ///////////////////////////////////////////////////
    this.setTitle("Let's Play with robot");
    this.setIconImage(icon.getImage());
@@ -275,9 +279,11 @@ public class Tic_Tac_Toe extends JFrame {
       
     }
     ///////////////////////////////////////////////////
+    this.setEnabled(false);
     this.setVisible(true);
   }
   private void letPlayTicWithTwo(String startWith){
+   System.out.println("We start with :"+startWith);
    progressionBar(namePlayerAvatar, newPlayerAvatar);
    this.setTitle("Let's Play with another person");
    this.setIconImage(icon.getImage());
@@ -297,29 +303,45 @@ public class Tic_Tac_Toe extends JFrame {
       
     }
     ///////////////////////////////////////////////////
+    this.setEnabled(false);
     this.setVisible(true);
+  }
+  private String startWithP(){
+   String[] listPl={"person1","person2"};
+   Random start=new Random();
+   return listPl[start.nextInt(0,1)];
   }
   private void progressionBar(String avatar1,String avatar2){
    ImageIcon av1=new ImageIcon(avatar1);
    ImageIcon av2=new ImageIcon(avatar2);
    //////////////////////////////////////////////////////////
    frameR=new JFrame("Progression Winner");
-   frameR.setBounds(1050,90,310,600);
+   frameR.setBounds(1050,90,310,550);
    frameR.setIconImage(icon.getImage());
    frameR.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
    frameR.setLayout(null);
    frameR.getContentPane().setBackground(Color.gray);;
    //////////////////////////////////////
-   
    JLabel ava1=new JLabel();
    ava1.setIcon(av1);
-   ava1.setBounds(0,10,av1.getIconWidth(),av1.getIconHeight());
+   ava1.setBounds(3,10,av1.getIconWidth(),av1.getIconHeight());
    namePly.setBounds(av1.getIconWidth()+5,10,100,25);
+   pl1.setBounds(av1.getIconWidth()+5,45,150,30);
+   pl1.setStringPainted(true);
+   pl1.setFont(new Font(null,Font.ITALIC,25));
+   pl1.setForeground(Color.YELLOW);
+   pl1.setBackground(Color.WHITE);
    //////////////////////////////////////////
-   
+   JLabel vs=new JLabel("VS");
+   vs.setBounds(130,170,100,30);
+   vs.setFont(new Font(null,Font.ITALIC,30));
+   vs.setForeground(Color.WHITE);
+   vs.setBackground(Color.GRAY);
+   vs.setOpaque(true);
+   /////////////////////////////////////////
    JLabel ava2=new JLabel();
    ava2.setIcon(av2);
-   ava2.setBounds(0,250,av2.getIconWidth(),av2.getIconHeight());
+   ava2.setBounds(3,250,av2.getIconWidth(),av2.getIconHeight());
    avatarNewPlayer.setBounds(av2.getIconWidth()+5,250,100,25);
    avatarNewPlayer.setBorder(BorderFactory.createLineBorder(Color.WHITE,3));
    avatarNewPlayer.setForeground(Color.WHITE);
@@ -327,14 +349,144 @@ public class Tic_Tac_Toe extends JFrame {
    avatarNewPlayer.setFont(new Font(null,Font.BOLD,20));
    avatarNewPlayer.setIcon(null);
    avatarNewPlayer.setText(newPlayerName);
+   pl2.setBounds(av2.getIconWidth()+5,285,150,30);
+   pl2.setStringPainted(true);
+   pl2.setFont(new Font(null,Font.ITALIC,25));
+   pl2.setForeground(Color.magenta);
+   pl2.setBackground(Color.WHITE);
    /////////////////////////////////////////
+   JButton startB=new JButton("Start game");
+   startB.setBounds(3,450,145,30);
+   startB.setFont(new Font(null,Font.BOLD,20));
+   startB.setForeground(Color.WHITE);
+   startB.setBackground(Color.GREEN);
+   startB.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent e){
+         startCounter();
+      }
+   });
+   ////////////////////////////////////////
+   JButton backP=new JButton("back");
+   backP.setBounds(151,450,142,30);
+   backP.setFont(new Font(null,Font.BOLD,20));
+   backP.setForeground(Color.WHITE);
+   backP.setBackground(Color.BLUE);
+   backP.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent e){
+         Tic_Tac_Toe bacK=new Tic_Tac_Toe(namePlayer,namePlayerAvatar);
+      }
+   });
+   ///////////////////////////////////////
    frameR.add(ava1);
    frameR.add(namePly);
+   frameR.add(pl1);
+   frameR.add(vs);
    frameR.add(ava2);
    frameR.add(avatarNewPlayer);
+   frameR.add(pl2);
+   frameR.add(startB);
+   frameR.add(backP);
    frameR.setVisible(true);
-
   }
+  private void startCounter(){
+        startCount=new JFrame("Counter");
+        startCount.setBounds(550,200,350,300);
+        startCount.setIconImage(icon.getImage());
+        startCount.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        startCount.setResizable(false);
+        ///////////////////////////////////////////////
+        count=new JLabel("1");
+        count.setBounds(400,10,300,200);
+        count.setFont(new Font(null,Font.BOLD,200));
+        count.setForeground(Color.BLUE);
+        count.setVerticalAlignment(JLabel.CENTER);
+        count.setHorizontalAlignment(JLabel.CENTER);
+        /////////////////////////////////////
+        startCount.add(count);
+        /////////////////////////////////////
+        Date date=new Date();
+        String[] precision=date.toString().split(" ");
+        String[] time=realTime(precision[3]);
+        int month=MonthSelection(precision[1]);
+        Timer timer=new Timer();
+        TimerTask task=new TimerTask() {
+           int countR=2;
+            public void run(){
+                if(countR<=5){
+                  String nmb=""+countR;
+                  count.setText(nmb);
+                  countR++;
+                  
+                }
+               else{
+                   count.setForeground(Color.GREEN);
+                    count.setText("GO");
+                    setE(true);
+                    try{
+                     Thread.sleep(2000);
+                    }
+                    catch(InterruptedException e){
+                        JOptionPane.showMessageDialog(null, "Error during process","Error",JOptionPane.ERROR_MESSAGE);
+                    }
+                    
+                    startCount.dispose();
+                    timer.cancel();
+                 }
+               }
+            };
+                Calendar cal=Calendar.getInstance();
+                cal.set(Calendar.YEAR,Integer.parseInt(precision[5]));
+                cal.set(Calendar.MONTH,month);
+                cal.set(Calendar.DAY_OF_MONTH,Integer.parseInt(precision[2]));
+                cal.set(Calendar.HOUR_OF_DAY,Integer.parseInt(time[0]));
+                cal.set(Calendar.MINUTE,Integer.parseInt(time[1]));
+                cal.set(Calendar.SECOND,Integer.parseInt(time[2])+5);
+                cal.set(Calendar.MILLISECOND,0);
+                timer.scheduleAtFixedRate(task,cal.getTime(),1000);
+                //////////////////////////////////////////////////////////
+                startCount.setVisible(true);
+            }
+            
+        
+        
+        
+private void setE(boolean t){
+   this.setEnabled(t);
+
+}
+  
+  private String[] realTime(String time){
+   String[] timing=time.split(":");
+   int hour=Integer.parseInt(timing[0]);
+   int minute=Integer.parseInt(timing[1]);
+   int sec=Integer.parseInt(timing[2]);
+   if(sec+5>=60){
+       minute++;
+       timing[2]="05";
+   }
+   if(minute>=60){
+       hour++;
+       timing[1]="00";
+       timing[2]="05";
+   }
+   if(hour>23){
+       timing[0]="00";
+       timing[1]="00";
+       timing[2]="05";
+   }
+   return timing;
+}
+private int MonthSelection(String month){
+   String[] monhtsAbr={"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
+   int index=0;
+   while(index<monhtsAbr.length){
+       if(month.equals(monhtsAbr[index])){
+           break;
+       }
+       index++;
+   }
+   return index;
+}
   
     private void addActivity(String nameAc){
         actTic.startA();
