@@ -47,9 +47,9 @@ public class Tic_Tac_Toe extends JFrame {
         nameFile=new File("Info//"+name+"//ACTIVITYPLAYER");
         avatarNewPlayer=new JLabel();
         pl1=new JProgressBar();
-        pl1.setValue(10);
+        pl1.setValue(0);
         pl2=new JProgressBar();
-        pl2.setValue(10);
+        pl2.setValue(0);
         howManyPlayer();
     }
     private void howManyPlayer(){/////Here we choose how many Are going to play
@@ -362,7 +362,7 @@ public class Tic_Tac_Toe extends JFrame {
    startB.setBackground(Color.GREEN);
    startB.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e){
-         startCounter();
+         startCounter(550,"GO");
       }
    });
    ////////////////////////////////////////
@@ -388,9 +388,9 @@ public class Tic_Tac_Toe extends JFrame {
    frameR.add(backP);
    frameR.setVisible(true);
   }
-  private void startCounter(){
+  private void startCounter(int c,String t){
         startCount=new JFrame("Counter");
-        startCount.setBounds(550,200,350,300);
+        startCount.setBounds(c,200,350,300);
         startCount.setIconImage(icon.getImage());
         startCount.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         startCount.setResizable(false);
@@ -420,7 +420,7 @@ public class Tic_Tac_Toe extends JFrame {
                 }
                else{
                    count.setForeground(Color.GREEN);
-                    count.setText("GO");
+                    count.setText(t);
                     setE(true);
                     try{
                      Thread.sleep(2000);
