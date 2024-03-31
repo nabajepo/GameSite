@@ -221,7 +221,6 @@ public class Tic_Tac_Toe extends JFrame {
 
     }
     private void OnePlayer(String getNiv){
-      System.out.println("We have one player with level: "+getNiv);
       String chooseTool="";
       String x="X";
       String o="O";
