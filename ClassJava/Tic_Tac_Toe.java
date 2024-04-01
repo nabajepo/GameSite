@@ -282,7 +282,6 @@ public class Tic_Tac_Toe extends JFrame {
     this.setVisible(true);
   }
   private void letPlayTicWithTwo(String startWith){
-   System.out.println("We start with :"+startWith);
    progressionBar(namePlayerAvatar, newPlayerAvatar);
    this.setTitle("Let's Play with another person");
    this.setIconImage(icon.getImage());
