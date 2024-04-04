@@ -256,7 +256,6 @@ public class Tic_Tac_Toe extends JFrame {
       return playAvailable;                           
   }
   private void letPlayTicWithOne(String startWith,String level){
-   System.out.println("We start with :"+startWith);
    progressionBar(namePlayerAvatar, "AvatarImage//robot.PNG");
    ///////////////////////////////////////////////////
    this.setTitle("Let's Play with robot");
