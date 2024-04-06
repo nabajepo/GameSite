@@ -281,7 +281,7 @@ public class Tic_Tac_Toe extends JFrame {
   }
   private void letPlayTicWithTwo(String startWith){
    progressionBar(namePlayerAvatar, newPlayerAvatar);
-   this.setTitle("Let's Play with another person");
+   this.setTitle("Let's play with another person");
    this.setIconImage(icon.getImage());
    this.setResizable(false);
     this.setBounds(420,90,600,600);
