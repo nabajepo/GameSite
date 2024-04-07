@@ -15,8 +15,6 @@ import java.util.Timer;
 
 import javax.swing.*;
 public class Tic_Tac_Toe extends JFrame {
-    private JButton start;
-    private JButton back;
     private ImageIcon icon; 
     private JComboBox<String> playAvailable;
     private JLabel avatarLabel;
@@ -258,7 +256,7 @@ public class Tic_Tac_Toe extends JFrame {
   private void letPlayTicWithOne(String startWith,String level){
    progressionBar(namePlayerAvatar, "AvatarImage//robot.PNG");
    ///////////////////////////////////////////////////
-   this.setTitle("Let's Play with robot");
+   this.setTitle("Let's play with robot");
    this.setIconImage(icon.getImage());
    this.setResizable(false);
     this.setBounds(400,90,600,600);
