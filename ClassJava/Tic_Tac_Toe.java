@@ -146,8 +146,7 @@ public class Tic_Tac_Toe extends JFrame {
         frameChoose.add(continueT);
         frameChoose.setVisible(true);
     }
-    //private void chooseTool(){
-    //}//:Here we choose what we play with
+   
     private void TooPlayer(){
       newP=new JFrame("Player Too"); 
       newP.setIconImage(icon.getImage());
