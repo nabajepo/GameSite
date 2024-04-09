@@ -366,7 +366,7 @@ public class Tic_Tac_Toe extends JFrame {
    backP.setBackground(Color.BLUE);
    backP.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e){
-         Tic_Tac_Toe bacK=new Tic_Tac_Toe(namePlayer,namePlayerAvatar);
+         Tic_Tac_Toe bac=new Tic_Tac_Toe(namePlayer,namePlayerAvatar);
       }
    });
    ///////////////////////////////////////
