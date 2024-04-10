@@ -148,7 +148,7 @@ public class Tic_Tac_Toe extends JFrame {
     }
    
     private void TooPlayer(){
-      newP=new JFrame("Player Too"); 
+      newP=new JFrame("Player Too's profile"); 
       newP.setIconImage(icon.getImage());
       newP.getContentPane().setBackground(Color.gray);
       newP.setBounds(440,90,550,390);
