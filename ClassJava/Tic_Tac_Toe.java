@@ -107,7 +107,7 @@ public class Tic_Tac_Toe extends JFrame {
         backToMain.setFont(new Font(null,Font.ROMAN_BASELINE,20));
         backToMain.addActionListener(new ActionListener() {
            public void actionPerformed(ActionEvent e){
-              //MainActivity back=new MainActivity(namePlayer, namePlayerAvatar);
+              MainActivity back=new MainActivity(namePlayer, namePlayerAvatar);
            }
         });
         //////////////////////////////////////////////////////////For button Continue
