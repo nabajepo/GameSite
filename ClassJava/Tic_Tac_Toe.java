@@ -267,7 +267,7 @@ public class Tic_Tac_Toe extends JFrame {
       this.add(loc);
       loc.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e){
-            //System.out.println("You touch button  "+loc.getText());
+            System.out.println("You touch button  "+loc.getText());
          }
       });
       
