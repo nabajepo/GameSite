@@ -173,7 +173,7 @@ public class Tic_Tac_Toe extends JFrame {
       insertName.setBounds(227,18,300,30);
       insertName.setCaretColor(Color.GREEN);
       /////////////////////////////
-      JButton back=new JButton("back");
+      JButton back=new JButton("Back");
         back.setBounds(5,300,185,40);
         back.setBackground(Color.ORANGE);
         back.setForeground(Color.WHITE);
