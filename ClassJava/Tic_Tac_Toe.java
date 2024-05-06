@@ -36,18 +36,37 @@ public class Tic_Tac_Toe extends JFrame {
     private String niv1="EASY";
     private String niv2="DIFFICULT";
     private JFrame frameR;
+    private JButton[] allButtons;
+    private String toolP1;
+    private String toolP2;
+    private String firstP;
+    private String secondP;
     public Tic_Tac_Toe(String name,String avatar){
         this.namePlayer=name;
         this.namePlayerAvatar=avatar;
+        ///////////////////////////////////////////////////////////
         icon=new ImageIcon("ImagesGameSite//ImageProjetEntier.jpg");
         actTic=new ActivityPlayer(name, avatar);
         playerQuantity=1;
         nameFile=new File("Info//"+name+"//ACTIVITYPLAYER");
         avatarNewPlayer=new JLabel();
+        //////////////////////////////////////////////////////////
         pl1=new JProgressBar();
         pl1.setValue(0);
         pl2=new JProgressBar();
         pl2.setValue(0);
+        /////////////////////////////////////////////////////////
+        allButtons=new JButton[9];
+        allButtons[0]=new JButton("1");
+        allButtons[1]=new JButton("2");
+        allButtons[2]=new JButton("3");
+        allButtons[3]=new JButton("4");
+        allButtons[4]=new JButton("5");
+        allButtons[5]=new JButton("6");
+        allButtons[6]=new JButton("7");
+        allButtons[7]=new JButton("8");
+        allButtons[8]=new JButton("9");
+        ///////////////////////////////////////////////////////
         howManyPlayer();
     }
     private void howManyPlayer(){/////Here we choose how many Are going to play
@@ -200,7 +219,8 @@ public class Tic_Tac_Toe extends JFrame {
                   newPlayerName=insertName.getText().trim();
                   newPlayerAvatar="AvatarImage//"+playAvailable.getSelectedItem()+".PNG";
                   newP.dispose();
-                  letPlayTicWithTwo(startWithP());
+                  chooseToolTwo(startWithP());
+                  
                 }
              }
         });
@@ -213,10 +233,8 @@ public class Tic_Tac_Toe extends JFrame {
       newP.add(back);
       newP.add(continu);
       newP.setVisible(true);
-
-
-
     }
+    
     private void OnePlayer(String getNiv){
       String chooseTool="";
       String x="X";
@@ -228,6 +246,15 @@ public class Tic_Tac_Toe extends JFrame {
             break;
          }
          
+      }
+      firstP=namePlayer;
+      secondP="robot";
+      toolP1=chooseTool;
+      if(toolP1.equals(x)){
+         toolP2=o;
+      }
+      else{
+         toolP2=x;
       }
       newPlayerName="robot";
       letPlayTicWithOne(startWithP(),getNiv);
@@ -261,7 +288,6 @@ public class Tic_Tac_Toe extends JFrame {
     this.setBounds(400,90,600,600);
     this.getContentPane().setBackground(Color.WHITE);
     this.setLayout(new GridLayout(3,3,10,10));
-    JButton[] allButtons={new JButton("1"),new JButton("2"),new JButton("3"),new JButton("4"),new JButton("5"),new JButton("6"),new JButton("7"),new JButton("8"),new JButton("9")};
     for(int index=0;index<allButtons.length;index++){
       JButton loc=allButtons[index];
       this.add(loc);
@@ -276,6 +302,36 @@ public class Tic_Tac_Toe extends JFrame {
     this.setEnabled(false);
     this.setVisible(true);
   }
+  private void chooseToolTwo(String startwith){
+   if(startwith.equals("person1")){
+      JOptionPane.showMessageDialog(null, "We start with first player","The person who starts", JOptionPane.INFORMATION_MESSAGE);
+   }
+   else{
+      JOptionPane.showMessageDialog(null, "We start with second player","The person who starts", JOptionPane.INFORMATION_MESSAGE);
+   }
+  
+   String chooseTool="";
+      String x="X";
+      String o="O";
+      while(true){
+         chooseTool=JOptionPane.showInputDialog("Choose your tool X or O").toUpperCase().trim();
+         if(chooseTool.equals(o)||chooseTool.equals(x)){
+            JOptionPane.showMessageDialog(null, "You chose player : "+chooseTool, "Player", JOptionPane.INFORMATION_MESSAGE);
+            break;
+         }
+         
+      }
+      firstP=namePlayer;
+      secondP=newPlayerName;
+      toolP1=chooseTool;
+      if(toolP1.equals(x)){
+         toolP2=o;
+      }
+      else{
+         toolP2=x;
+      }
+      letPlayTicWithTwo(startwith);
+  }
   private void letPlayTicWithTwo(String startWith){
    progressionBar(namePlayerAvatar, newPlayerAvatar);
    this.setTitle("Let's play with another person");
@@ -284,7 +340,7 @@ public class Tic_Tac_Toe extends JFrame {
     this.setBounds(420,90,600,600);
     this.getContentPane().setBackground(Color.WHITE);
     this.setLayout(new GridLayout(3,3,10,10));
-    JButton[] allButtons={new JButton("1"),new JButton("2"),new JButton("3"),new JButton("4"),new JButton("5"),new JButton("6"),new JButton("7"),new JButton("8"),new JButton("9")};
+   
     for(int index=0;index<allButtons.length;index++){
       JButton loc=allButtons[index];
       this.add(loc);
@@ -302,7 +358,7 @@ public class Tic_Tac_Toe extends JFrame {
   private String startWithP(){
    String[] listPl={"person1","person2"};
    Random start=new Random();
-   return listPl[start.nextInt(0,1)];
+   return listPl[start.nextInt(0,listPl.length)];
   }
   private void progressionBar(String avatar1,String avatar2){
    ImageIcon av1=new ImageIcon(avatar1);
