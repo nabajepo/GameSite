@@ -57,15 +57,15 @@ public class Tic_Tac_Toe extends JFrame {
         pl2.setValue(0);
         /////////////////////////////////////////////////////////
         allButtons=new JButton[9];
-        allButtons[0]=new JButton("1");
-        allButtons[1]=new JButton("2");
-        allButtons[2]=new JButton("3");
-        allButtons[3]=new JButton("4");
-        allButtons[4]=new JButton("5");
-        allButtons[5]=new JButton("6");
-        allButtons[6]=new JButton("7");
-        allButtons[7]=new JButton("8");
-        allButtons[8]=new JButton("9");
+        allButtons[0]=new JButton("-");
+        allButtons[1]=new JButton("-");
+        allButtons[2]=new JButton("-");
+        allButtons[3]=new JButton("-");
+        allButtons[4]=new JButton("-");
+        allButtons[5]=new JButton("-");
+        allButtons[6]=new JButton("-");
+        allButtons[7]=new JButton("-");
+        allButtons[8]=new JButton("-");
         ///////////////////////////////////////////////////////
         howManyPlayer();
     }
@@ -288,16 +288,9 @@ public class Tic_Tac_Toe extends JFrame {
     this.setBounds(400,90,600,600);
     this.getContentPane().setBackground(Color.WHITE);
     this.setLayout(new GridLayout(3,3,10,10));
-    for(int index=0;index<allButtons.length;index++){
-      JButton loc=allButtons[index];
-      this.add(loc);
-      loc.addActionListener(new ActionListener() {
-         public void actionPerformed(ActionEvent e){
-            System.out.println("You touch button  "+loc.getText());
-         }
-      });
+   
       
-    }
+  
     ///////////////////////////////////////////////////
     this.setEnabled(false);
     this.setVisible(true);
@@ -340,17 +333,6 @@ public class Tic_Tac_Toe extends JFrame {
     this.setBounds(420,90,600,600);
     this.getContentPane().setBackground(Color.WHITE);
     this.setLayout(new GridLayout(3,3,10,10));
-   
-    for(int index=0;index<allButtons.length;index++){
-      JButton loc=allButtons[index];
-      this.add(loc);
-      loc.addActionListener(new ActionListener() {
-         public void actionPerformed(ActionEvent e){
-            System.out.println("You touch button  "+loc.getText());
-         }
-      });
-      
-    }
     ///////////////////////////////////////////////////
     this.setEnabled(false);
     this.setVisible(true);
@@ -568,6 +550,58 @@ private int MonthSelection(String month){
         catch(Exception e){
             JOptionPane.showMessageDialog(null, "Error during process", "Error", JOptionPane.ERROR_MESSAGE);
         }
-        
-    }
+      }
+      private boolean columnG(String tool){
+         boolean g=false;
+         if((allButtons[0].getText().equals(tool))&&(allButtons[3].getText().equals(tool))&&
+         (allButtons[6].getText().equals(tool))){
+            g=true;
+         }
+         else if((allButtons[1].getText().equals(tool))&&(allButtons[4].getText().equals(tool))&&
+         (allButtons[7].getText().equals(tool))){
+            g=true;
+         }
+         else if((allButtons[2].getText().equals(tool))&&(allButtons[5].getText().equals(tool))&&
+         (allButtons[8].getText().equals(tool))){
+            g=true;
+         }
+         return g;
+      }
+      private boolean lineG(String tool){
+         boolean g=false;
+         if((allButtons[0].getText().equals(tool))&&(allButtons[1].getText().equals(tool))&&
+         (allButtons[2].getText().equals(tool))){
+            g=true;
+         }
+         else if((allButtons[3].getText().equals(tool))&&(allButtons[4].getText().equals(tool))&&
+         (allButtons[5].getText().equals(tool))){
+            g=true;
+         }
+         else if((allButtons[6].getText().equals(tool))&&(allButtons[7].getText().equals(tool))&&
+         (allButtons[8].getText().equals(tool))){
+            g=true;
+         }
+         return g;
+      }
+      private boolean diagonnalG(String tool){
+         boolean g=false;
+         if((allButtons[0].getText().equals(tool))&&(allButtons[4].getText().equals(tool))&&
+         (allButtons[8].getText().equals(tool))){
+            g=true;
+         }
+         else if((allButtons[2].getText().equals(tool))&&(allButtons[4].getText().equals(tool))&&
+         (allButtons[6].getText().equals(tool))){
+            g=true;
+         }
+         return g;
+      }
+      private boolean isAwinner(String tool){
+         if(columnG(tool)||lineG(tool)||diagonnalG(tool)){
+            return true;
+         }
+         else{
+            return false;
+         }
+
+      }
 }
