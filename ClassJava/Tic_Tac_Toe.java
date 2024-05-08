@@ -604,4 +604,17 @@ private int MonthSelection(String month){
          }
 
       }
+      private boolean isDone(){
+         boolean isd=true;
+         int index=0;
+         while(index<allButtons.length){
+            if(allButtons[index].getText().equals("-")){
+               isd=false;
+               break;
+            }
+            index++;
+         }
+         return isd;
+      }
+      
 }
