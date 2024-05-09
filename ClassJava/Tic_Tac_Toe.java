@@ -6,7 +6,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
-
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Random;
 import java.util.TimerTask;
@@ -616,5 +616,42 @@ private int MonthSelection(String month){
          }
          return isd;
       }
+      private ArrayList<JButton> getPlacesEmp(){
+         ArrayList<JButton> buttons=new ArrayList<>();
+         int index=0;
+         while(index<allButtons.length){
+            if(allButtons[index].getText().equals("-")){
+               buttons.add(allButtons[index]);
+            }
+            index++;
+         }
+         return buttons;
+      }
+      private JButton dPut(String tool){
+        if((allButtons[0].getText().equals(tool))&&(allButtons[4].getText().equals(tool))){
+           return allButtons[8];
+        }
+        else if((allButtons[0].getText().equals(tool))&&(allButtons[8].getText().equals(tool))){
+         return allButtons[4];
+        }
+        else if((allButtons[4].getText().equals(tool))&&(allButtons[8].getText().equals(tool))){
+         return allButtons[0];
+        }
+        else if((allButtons[2].getText().equals(tool))&&(allButtons[4].getText().equals(tool))){
+         return allButtons[6];
+        }
+        else if((allButtons[2].getText().equals(tool))&&(allButtons[6].getText().equals(tool))){
+         return allButtons[4];
+        }
+        else if((allButtons[4].getText().equals(tool))&&(allButtons[6].getText().equals(tool))){
+         return allButtons[2];
+        }
+        else{
+            return cPut();
+        }
+      }
+     private JButton cPut(){
+       return allButtons[0];
+     }
       
 }
