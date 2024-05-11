@@ -616,8 +616,9 @@ private int MonthSelection(String month){
          }
          return isd;
       }
-      private ArrayList<JButton> getPlacesEmp(){
+      private JButton getPlacesEmp(){
          ArrayList<JButton> buttons=new ArrayList<>();
+         Random bt=new Random();
          int index=0;
          while(index<allButtons.length){
             if(allButtons[index].getText().equals("-")){
@@ -625,7 +626,7 @@ private int MonthSelection(String month){
             }
             index++;
          }
-         return buttons;
+         return buttons.get(bt.nextInt(0,buttons.size()));
       }
       private JButton dPut(String tool){
         if((allButtons[0].getText().equals(tool))&&(allButtons[4].getText().equals(tool))){
@@ -647,11 +648,49 @@ private int MonthSelection(String month){
          return allButtons[2];
         }
         else{
-            return cPut();
+            return cPut(tool);
         }
       }
-     private JButton cPut(){
+     private JButton cPut(String tool){
+      if((allButtons[0].getText().equals(tool))&&(allButtons[3].getText().equals(tool))){
+         return allButtons[6];
+      }
+      else if((allButtons[0].getText().equals(tool))&&(allButtons[6].getText().equals(tool))){
+       return allButtons[3];
+      }
+      else if((allButtons[3].getText().equals(tool))&&(allButtons[6].getText().equals(tool))){
        return allButtons[0];
+      }
+      else if((allButtons[1].getText().equals(tool))&&(allButtons[4].getText().equals(tool))){
+       return allButtons[7];
+      }
+      else if((allButtons[1].getText().equals(tool))&&(allButtons[7].getText().equals(tool))){
+       return allButtons[4];
+      }
+      else if((allButtons[4].getText().equals(tool))&&(allButtons[7].getText().equals(tool))){
+         return allButtons[1];
+        }
+        else if((allButtons[1].getText().equals(tool))&&(allButtons[7].getText().equals(tool))){
+         return allButtons[4];
+        }
+        else if((allButtons[2].getText().equals(tool))&&(allButtons[5].getText().equals(tool))){
+         return allButtons[8];
+        }
+        else if((allButtons[2].getText().equals(tool))&&(allButtons[8].getText().equals(tool))){
+         return allButtons[5];
+        }
+        else if((allButtons[5].getText().equals(tool))&&(allButtons[8].getText().equals(tool))){
+         return allButtons[2];
+        }
+        else{
+         return lPut(tool);
+        }
+
+
      }
+     private JButton lPut(String tool){
+      return allButtons[0];
+     }
+
       
 }
