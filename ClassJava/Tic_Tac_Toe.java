@@ -632,7 +632,7 @@ private int MonthSelection(String month){
         if((allButtons[0].getText().equals(tool))&&(allButtons[4].getText().equals(tool))&&(allButtons[8].getText().equals("-"))){
            return allButtons[8];
         }
-        else if((allButtons[0].getText().equals(tool))&&(allButtons[8].getText().equals(tool))){
+        else if((allButtons[0].getText().equals(tool))&&(allButtons[8].getText().equals(tool))&&(allButtons[4].getText().equals("-"))){
          return allButtons[4];
         }
         else if((allButtons[4].getText().equals(tool))&&(allButtons[8].getText().equals(tool))){
