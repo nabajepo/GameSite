@@ -635,16 +635,16 @@ private int MonthSelection(String month){
         else if((allButtons[0].getText().equals(tool))&&(allButtons[8].getText().equals(tool))&&(allButtons[4].getText().equals("-"))){
          return allButtons[4];
         }
-        else if((allButtons[4].getText().equals(tool))&&(allButtons[8].getText().equals(tool))){
+        else if((allButtons[4].getText().equals(tool))&&(allButtons[8].getText().equals(tool))&&(allButtons[0].getText().equals("-"))){
          return allButtons[0];
         }
-        else if((allButtons[2].getText().equals(tool))&&(allButtons[4].getText().equals(tool))){
+        else if((allButtons[2].getText().equals(tool))&&(allButtons[4].getText().equals(tool))&&(allButtons[6].getText().equals("-"))){
          return allButtons[6];
         }
-        else if((allButtons[2].getText().equals(tool))&&(allButtons[6].getText().equals(tool))){
+        else if((allButtons[2].getText().equals(tool))&&(allButtons[6].getText().equals(tool))&&(allButtons[4].getText().equals("-"))){
          return allButtons[4];
         }
-        else if((allButtons[4].getText().equals(tool))&&(allButtons[6].getText().equals(tool))){
+        else if((allButtons[4].getText().equals(tool))&&(allButtons[6].getText().equals(tool))&&(allButtons[2].getText().equals("-"))){
          return allButtons[2];
         }
         else{
@@ -652,34 +652,34 @@ private int MonthSelection(String month){
         }
       }
      private JButton cPut(String tool){
-      if((allButtons[0].getText().equals(tool))&&(allButtons[3].getText().equals(tool))){
+      if((allButtons[0].getText().equals(tool))&&(allButtons[3].getText().equals(tool))&&(allButtons[6].getText().equals("-"))){
          return allButtons[6];
       }
-      else if((allButtons[0].getText().equals(tool))&&(allButtons[6].getText().equals(tool))){
+      else if((allButtons[0].getText().equals(tool))&&(allButtons[6].getText().equals(tool))&&(allButtons[3].getText().equals("-"))){
        return allButtons[3];
       }
-      else if((allButtons[3].getText().equals(tool))&&(allButtons[6].getText().equals(tool))){
+      else if((allButtons[3].getText().equals(tool))&&(allButtons[6].getText().equals(tool))&&(allButtons[0].getText().equals("-"))){
        return allButtons[0];
       }
-      else if((allButtons[1].getText().equals(tool))&&(allButtons[4].getText().equals(tool))){
+      else if((allButtons[1].getText().equals(tool))&&(allButtons[4].getText().equals(tool))&&(allButtons[7].getText().equals("-"))){
        return allButtons[7];
       }
-      else if((allButtons[1].getText().equals(tool))&&(allButtons[7].getText().equals(tool))){
+      else if((allButtons[1].getText().equals(tool))&&(allButtons[7].getText().equals(tool))&&(allButtons[4].getText().equals("-"))){
        return allButtons[4];
       }
-      else if((allButtons[4].getText().equals(tool))&&(allButtons[7].getText().equals(tool))){
+      else if((allButtons[4].getText().equals(tool))&&(allButtons[7].getText().equals(tool))&&(allButtons[1].getText().equals("-"))){
          return allButtons[1];
         }
-        else if((allButtons[1].getText().equals(tool))&&(allButtons[7].getText().equals(tool))){
+        else if((allButtons[1].getText().equals(tool))&&(allButtons[7].getText().equals(tool))&&(allButtons[4].getText().equals("-"))){
          return allButtons[4];
         }
-        else if((allButtons[2].getText().equals(tool))&&(allButtons[5].getText().equals(tool))){
+        else if((allButtons[2].getText().equals(tool))&&(allButtons[5].getText().equals(tool))&&(allButtons[8].getText().equals("-"))){
          return allButtons[8];
         }
-        else if((allButtons[2].getText().equals(tool))&&(allButtons[8].getText().equals(tool))){
+        else if((allButtons[2].getText().equals(tool))&&(allButtons[8].getText().equals(tool))&&(allButtons[5].getText().equals("-"))){
          return allButtons[5];
         }
-        else if((allButtons[5].getText().equals(tool))&&(allButtons[8].getText().equals(tool))){
+        else if((allButtons[5].getText().equals(tool))&&(allButtons[8].getText().equals(tool))&&(allButtons[2].getText().equals("-"))){
          return allButtons[2];
         }
         else{
@@ -689,34 +689,41 @@ private int MonthSelection(String month){
 
      }
      private JButton lPut(String tool){
-      if((allButtons[0].getText().equals(tool))&&(allButtons[1].getText().equals(tool))){
+      if((allButtons[0].getText().equals(tool))&&(allButtons[1].getText().equals(tool))&&(allButtons[2].getText().equals("-"))){
          return allButtons[2];
       }
-      else if((allButtons[0].getText().equals(tool))&&(allButtons[2].getText().equals(tool))){
+      else if((allButtons[0].getText().equals(tool))&&(allButtons[2].getText().equals(tool))&&(allButtons[1].getText().equals("-"))){
        return allButtons[1];
       }
-      else if((allButtons[1].getText().equals(tool))&&(allButtons[2].getText().equals(tool))){
+      else if((allButtons[1].getText().equals(tool))&&(allButtons[2].getText().equals(tool))&&(allButtons[0].getText().equals("-"))){
        return allButtons[0];
       }
-      else if((allButtons[3].getText().equals(tool))&&(allButtons[4].getText().equals(tool))){
+      else if((allButtons[3].getText().equals(tool))&&(allButtons[4].getText().equals(tool))&&(allButtons[5].getText().equals("-"))){
        return allButtons[5];
       }
-      else if((allButtons[3].getText().equals(tool))&&(allButtons[5].getText().equals(tool))){
+      else if((allButtons[3].getText().equals(tool))&&(allButtons[5].getText().equals(tool))&&(allButtons[4].getText().equals("-"))){
        return allButtons[4];
       }
-      else if((allButtons[5].getText().equals(tool))&&(allButtons[4].getText().equals(tool))){
+      else if((allButtons[5].getText().equals(tool))&&(allButtons[4].getText().equals(tool))&&(allButtons[3].getText().equals("-"))){
          return allButtons[3];
         }
-        else if((allButtons[6].getText().equals(tool))&&(allButtons[7].getText().equals(tool))){
+        else if((allButtons[6].getText().equals(tool))&&(allButtons[7].getText().equals(tool))&&(allButtons[8].getText().equals("-"))){
          return allButtons[8];
         }
-        else if((allButtons[6].getText().equals(tool))&&(allButtons[8].getText().equals(tool))){
+        else if((allButtons[6].getText().equals(tool))&&(allButtons[8].getText().equals(tool))&&(allButtons[7].getText().equals("-"))){
          return allButtons[7];
         }
         else{
-          return allButtons[6];
+          return allButtons[6];////////////If 6 is bussy also we start
         }
         
+     }
+     private void restart(){
+      int i=0;
+      while(i<allButtons.length){
+         allButtons[i].setText("-");
+         i++;
+      }
      }
 
       
