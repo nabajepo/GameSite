@@ -719,10 +719,10 @@ private int MonthSelection(String month){
         
      }
      private void restart(){
-      int i=0;
-      while(i<allButtons.length){
-         allButtons[i].setText("-");
-         i++;
+      int bt=0;
+      while(bt<allButtons.length){
+         allButtons[bt].setText("-");
+         bt++;
       }
      }
 
