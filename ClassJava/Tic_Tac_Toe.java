@@ -714,7 +714,7 @@ private int MonthSelection(String month){
          return allButtons[7];
         }
         else{
-          return allButtons[6];////////////If 6 is bussy also we start
+          return allButtons[6];////////////If 6 is bussy also we 
         }
         
      }
