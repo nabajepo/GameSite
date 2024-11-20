@@ -40,7 +40,7 @@ public class Account extends JFrame {
     private JButton create;
     private JButton back;
     private ImageIcon imageIcon;
-    private JComboBox avatarChoose;
+    private JComboBox<String> avatarChoose;
     private JLabel chooseAvLabel;
     private JLabel avatarImage=new JLabel();
     private JFrame frameWaiting;
@@ -195,7 +195,7 @@ public class Account extends JFrame {
     }
     private JComboBox<String> ChooseAvatar(){
         String[] avatar={"Avatar1","Avatar2","Avatar3","Avatar4","Avatar5","Avatar6","Avatar7","Avatar8"};
-        avatarChoose=new JComboBox<>(avatar);
+        avatarChoose=new JComboBox<String>(avatar);
         avatarChoose.setBackground(Color.PINK);
         avatarChoose.setBounds(231,440,300,40);
         avatarDisplay(new ImageIcon("AvatarImage//Avatar1.PNG"));
