@@ -197,11 +197,12 @@ public class Account extends JFrame {
         String[] avatar={"Avatar1","Avatar2","Avatar3","Avatar4","Avatar5","Avatar6","Avatar7","Avatar8"};
         avatarChoose=new JComboBox<String>(avatar);
         avatarChoose.setBackground(Color.PINK);
-        avatarChoose.setBounds(231,440,300,40);
+
+        avatarChoose.setBounds(231,440,300,30);
         avatarDisplay(new ImageIcon("AvatarImage//Avatar1.PNG"));
         avatarChoose.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                avatarDisplay(new ImageIcon("AvatarImage//"+avatarChoose.getSelectedItem()+".PNG"));
+                avatarDisplay(new ImageIcon("AvatarImage/"+avatarChoose.getSelectedItem()+".PNG"));
             }
         });
         return avatarChoose;                           
@@ -240,11 +241,11 @@ public class Account extends JFrame {
                             //closeFrameAccount();
                             //Identification_Page backToconnection=new Identification_Page();
                             }
-                        }
+                       }
                         
                     else{
                         closeFrameAccount();
-                        JOptionPane.showMessageDialog(null, "Sorry we can proceed with the creatio,response doesn't match",
+                        JOptionPane.showMessageDialog(null, "Sorry we can proceed with the creation,response doesn't match",
                         "Not Allowed",
                          JOptionPane.ERROR_MESSAGE);
                          Identification_Page backToconnection=new Identification_Page();
@@ -363,15 +364,15 @@ public class Account extends JFrame {
         
     }
     private boolean CreateAccount(){
+        
         try{
-            File file0=new File("Info//"+username.getText()+"//");
+            System.out.println("Hello Create account");
+            File file0=new File("Info//"+username.getText());
             File file=new File("Info//"+username.getText()+"//AccountPersonal.StockInfo");
-            if((file0.exists())&&
-            (file.exists())){
-                throw new IOException();
-            }
+
+            if((file0.exists())&& (file.exists()))throw new IOException("Utilisateur existant");
             else{
-                file0.mkdir();
+                if(!file0.mkdirs()) throw new IOException("Erreur au  niveau de la creation du dire file0");
                 String avatarWay="AvatarImage//"+avatarChoose.getSelectedItem()+".PNG";
                 AccountInformationCreation infoCreation=new AccountInformationCreation(username.getText().trim(), userpassword.getText().trim(),avatarWay);
                 FileOutputStream create_account=new FileOutputStream(file);
@@ -383,6 +384,7 @@ public class Account extends JFrame {
             }
         }
         catch(IOException e){
+            System.out.println("Hello can't "+e.getMessage());
             JOptionPane.showMessageDialog(avatarChoose, "Can't create your account,because you have a account", "ERROR DURING CREATION", JOptionPane.ERROR_MESSAGE);
             return false;
         }

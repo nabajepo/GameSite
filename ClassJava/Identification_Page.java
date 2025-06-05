@@ -4,7 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 
@@ -50,7 +49,7 @@ public class Identification_Page extends JFrame {
     }
     private void MakeFrame(){
         ColorChange=false;///////////we start to the frame made  before
-        this.setTitle("Identification Page");
+        this.setTitle("Identification-Page");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
         this.setIconImage(iconGame.getImage());
