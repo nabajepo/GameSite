@@ -39,7 +39,7 @@ Current features include:
 
 ---
 
-## Run 
+## Run locally
 ```bash
 java ClassJava.Launch_Page
 ```
@@ -52,5 +52,6 @@ The project is still under development.
 Planned improvements:
 
 - Complete Tic-Tac-Toe implementation
+- Using Sockets
 
 
