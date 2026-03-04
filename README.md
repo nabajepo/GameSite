@@ -52,6 +52,7 @@ The project is still under development.
 Planned improvements:
 
 - Complete Tic-Tac-Toe implementation
-- Using Sockets
+- Add **socket-based multiplayer communication**
+- Improve the graphical interface
 
 
