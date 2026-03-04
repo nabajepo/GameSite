@@ -36,5 +36,9 @@ Current features include:
 - Local file storage
 
 ---
+Run 
+```bash
+java ClassJava.Launch_Page
+```
 
 
