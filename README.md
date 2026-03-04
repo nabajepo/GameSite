@@ -1,8 +1,40 @@
-# Description
-This software allows users to create an account and log in, allowing them to use all of the software's applications.
-The software saves user information locally in a folder to avoid confusion between users using the same laptop.
-The software offers games such as:
-1) A music player: each player can add their own music and singer.
-2) Tic-tac-toe: a player can play alone (a robot) or with another person.
+# GameSite – Java Desktop Gaming Environment
 
------>>>>>>>In process 
+## Overview
+GameSite is a **Java desktop application** that provides a small gaming and multimedia environment for users.
+
+The application allows users to create an account and log in before accessing the different available features. User data is stored locally to ensure that multiple users can use the application on the same computer without conflicts.
+
+---
+
+## Features
+
+Current features include:
+
+### User System
+- Create an account
+- Login system
+- User information stored locally
+
+### Music Player
+- Users can add their own music
+- Users can add singers
+- Play music from the local system
+
+### Games
+- Tic-Tac-Toe game
+- Play against another player
+- (Planned) Play against an AI
+
+---
+
+## Technologies Used
+
+- Java
+- Java Swing
+- JFrame / UI components
+- Local file storage
+
+---
+
+
