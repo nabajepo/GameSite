@@ -35,10 +35,22 @@ Current features include:
 - JFrame / UI components
 - Local file storage
 
+
+
 ---
-Run 
+
+## Run 
 ```bash
 java ClassJava.Launch_Page
 ```
+---
+## Project Status
+
+🚧 **Work in Progress**
+
+The project is still under development.
+Planned improvements:
+
+- Complete Tic-Tac-Toe implementation
 
 
